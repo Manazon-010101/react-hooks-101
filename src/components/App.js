@@ -1,7 +1,8 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState } from 'react'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
+import Event from './Event'
 import reducer from '../reducers'
 
 const App = () => {
@@ -18,7 +19,6 @@ const App = () => {
       body
     })
 
-    // ↓作成ボタンクリック後に空白になる
     setTitle('')
     setBody('')
   }
@@ -31,7 +31,6 @@ const App = () => {
       <form>
         <div className="form-group">
           <label htmlFor="formEventTitle">タイトル</label>
-                                                                                {/* ↓新たなinputに入力された文字列を取り出す */}
           <input className="form-control" id="formEventTitle" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
 
@@ -55,6 +54,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
+          { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch}/>)) }
         </tbody>
       </table>
     </div>
