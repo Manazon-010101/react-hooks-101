@@ -1,12 +1,22 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 const App = props => {
-                                  // ↓ オブジェクトを丸ごと渡すことができる
   const [state, setState] = useState(props)
   const { name, price } = state
 
-  // 状態は個々のvalue(値)で持つだけじゃくて、オブジェクトと言う形でも持てる
-  // propsを丸ごと渡してそのpropsと言うものを全部まるっとstateオブジェクトで管理する
+  // useEffectはレンダリングの後で実行される。
+  // これを使うことで非常に強力なコールバックを設定することができる。
+  useEffect(() => {
+    console.log('This is like componentDidMount or componentDidUpdate.')
+  })
+
+  useEffect(() => {
+    console.log('This is like componentDidMount')
+  }, [])
+
+  useEffect(() => {
+    console.log('This callback is for name only.')
+  }, [name])
 
   return (
     <>
