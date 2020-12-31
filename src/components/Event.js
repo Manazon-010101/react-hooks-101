@@ -3,9 +3,6 @@ import React, { useContext } from 'react'
 import { DELETE_EVENT } from '../actions'
 import AppContext from '../contexts/AppContext'
 
-// このEventはdispatchが渡ってくる前提で書いていたが、propではもはや渡って来ないので
-// 引数のdispatchは不要だが、その代わりuseContextを
-// AppContextからimportしてdispatchを受け取る
 const Event = ({ event }) => {
   const { dispatch } = useContext(AppContext)
   const id = event.id

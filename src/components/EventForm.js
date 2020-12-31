@@ -7,7 +7,6 @@ import {
 import AppContext from '../contexts/AppContext'
 
 const EventForm = () => {
-  // state, dispatchはprop経由で来なくなる代わりにContextから参照する
   const { state, dispatch } = useContext(AppContext)
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
