@@ -1,6 +1,4 @@
 import React, { useReducer } from 'react'
-              // ↑useStateはEventFormでやってるので不要
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import EventForm from './EventForm'
@@ -13,7 +11,6 @@ const App = () => {
 
   return (
     <div className="container-fluid">
-      {/* ↓EventFormにeventとdispatchがpropとして渡される(Reactの超基本) */}
       <EventForm state={state} dispatch={dispatch}/>
       <Events state={state} dispatch={dispatch}/>
     </div>
