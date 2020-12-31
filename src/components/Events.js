@@ -3,13 +3,13 @@ import React, { useContext } from 'react'
 import Event from './Event'
 import AppContext from '../contexts/AppContext'
 
-const Events = ({state, dispatch}) => {
-  // 共有したいものをProviderに渡せばそのProviderでラップされた任意のコンポーネント上で
-  // Propsを返さずにバケツリレーみたいな事をせずに共有物を参照することができる
-  const value = useContext(AppContext)
+const Events = () => {
+  // Eventに必要なdispatchは実はこのEventsコンポーネントでは直接的には必要ではない
+  // EventコンポーネントもこのEventsと同じようにContextを使えば直接dispatchを受け取ることが出来るので、
+  // このEventsコンポーネントでuseContextでdispatchを受け取ると書いたが、実は不要
+  const { state } = useContext(AppContext)
   return (
     <>
-      <div>{value}</div>
       <h4>イベント一覧</h4>
         <table className="table table-hover">
           <thead>
@@ -21,7 +21,8 @@ const Events = ({state, dispatch}) => {
             </tr>
           </thead>
           <tbody>
-            { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch}/>)) }
+            {/* そして配下コンポーネントであるEventに対して、prop経由で渡っていたdispatchも不要になる */}
+            { state.map((event, index) => (<Event key={index} event={event} />)) }
           </tbody>
         </table>
     </>
