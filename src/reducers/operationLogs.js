@@ -1,22 +1,22 @@
 import {
   ADD_OPERATION_LOG,
-  DELETE_ALL_OPARATION_LOGS
+  DELETE_ALL_OPERATION_LOGS
 } from '../actions'
 
                       // ↓reducerなのでstateが丸ごと渡ってくる。
-const oparationLogs = (state= [], action) => {
+const operationLogs = (state= [], action) => {
   switch (action.type) {
     case ADD_OPERATION_LOG:
       const operationLog = {
-        dasecription: action.dasecription,
+        description: action.description,
         operatedAt: action.operatedAt
       }
       return [operationLog, ...state]
-    case DELETE_ALL_OPARATION_LOGS:
+    case DELETE_ALL_OPERATION_LOGS:
       return []
     default:
       return state
   }
 }
 
-export default oparationLogs
+export default operationLogs
