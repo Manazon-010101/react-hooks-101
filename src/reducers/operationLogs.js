@@ -3,7 +3,6 @@ import {
   DELETE_ALL_OPERATION_LOGS
 } from '../actions'
 
-                      // ↓reducerなのでstateが丸ごと渡ってくる。
 const operationLogs = (state= [], action) => {
   switch (action.type) {
     case ADD_OPERATION_LOG:
